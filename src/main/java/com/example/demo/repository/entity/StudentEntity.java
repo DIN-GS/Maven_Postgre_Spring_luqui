@@ -13,15 +13,12 @@ import java.util.List;
 public class StudentEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     public int id;
 
     @Column
     public String name;
-
-    @Column
-    public int age;
 
     @Column
     public String email;

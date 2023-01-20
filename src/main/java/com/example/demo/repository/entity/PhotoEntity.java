@@ -19,11 +19,11 @@ public class PhotoEntity {
     @Column
     private long id;
 
-    /*@Column
-    private int student_id;*/
-
     @Column
     private String url;
+
+    @Column
+    private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "student_id", nullable = false)
