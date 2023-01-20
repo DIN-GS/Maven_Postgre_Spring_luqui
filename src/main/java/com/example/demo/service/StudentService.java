@@ -15,10 +15,8 @@ public class StudentService {
     public void createStudent(String name, String email){
 
         StudentEntity studentEntity = new StudentEntity();
-        studentEntity.setFullName(name);
+        studentEntity.setName(name);
         studentEntity.setEmail(email);
-
-
-        //studentRepository.save();
+        studentRepository.save(studentEntity);
     }
 }

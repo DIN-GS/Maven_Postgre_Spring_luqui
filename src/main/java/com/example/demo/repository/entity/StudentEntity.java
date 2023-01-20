@@ -1,21 +1,24 @@
 package com.example.demo.repository.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+import java.util.List;
+
+@Entity
+@Getter
+@Setter
+@Table(name = "student", schema = "nix")
 public class StudentEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column
     public int id;
 
     @Column
-    public String fullName;
+    public String name;
 
     @Column
     public int age;
@@ -23,4 +26,6 @@ public class StudentEntity {
     @Column
     public String email;
 
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade =  CascadeType.REMOVE)
+    private List<PhotoEntity> photo;
 }
