@@ -27,15 +27,15 @@ public class NixClothesShopNvHipHopApplication {
 	@Bean
 	public CommandLineRunner run(ApplicationContext ctx){
 		return (args -> {
-			service.createStudent("Mark", "mark@gmail.com");
-			service.createStudent("Max", "max@gmail.com");
-			System.out.println(service.findAll());
+			/*service.createStudent("Mark", "mark@gmail.com");
+			service.createStudent("Max", "max@gmail.com");*/
+			service.findAll().forEach(System.out::println);
 
-			//photoService.createPhotoEntity("llll", "first", 1L);
-			//photoService.createPhotoEntity("llhyj", "second", 1L);
-			//photoService.createPhotoEntity("erer", "third", 2L);
+			photoService.createPhotoEntity("llll", "first", 1L);
+			photoService.createPhotoEntity("llhyj", "second", 1L);
+			photoService.createPhotoEntity("erer", "third", 2L);
 
-			//photoService.getPhotoByDescription("first").forEach(photo -> System.out.println(photo.getUrl()));
+			photoService.getPhotoByDescription("first").forEach(photo -> System.out.println(photo.getUrl()));
 
 		});
 	}
