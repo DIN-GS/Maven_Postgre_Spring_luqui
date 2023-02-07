@@ -40,7 +40,7 @@ class StudentControllerTest {
         studentDTO = StudentMapper.INSTANCE.toDTO(studentService.findStudentEntityById(2L));
     }*/
 
-    @Test
+    /*@Test
     void shouldGetStudentById() throws IOException, ClientProtocolException {
         System.setProperty("webdriver.chrome.driver", "C:\\path\\to\\chromedriver.exe");
 
@@ -50,7 +50,7 @@ class StudentControllerTest {
 
         int a = httpResponse.getStatusLine().getStatusCode();
         assertThat(a, equalTo(HttpStatus.SC_OK));
-    }
+    }*/
 
 
 

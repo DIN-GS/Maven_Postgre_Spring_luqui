@@ -2,7 +2,7 @@ package com.example.demo.exception;
 
 import java.util.function.Supplier;
 
-public class StudentNotFoundException extends Exception {
+public class StudentNotFoundException extends Exception{
     public StudentNotFoundException(String errorMessage) {
         super(errorMessage);
     }
