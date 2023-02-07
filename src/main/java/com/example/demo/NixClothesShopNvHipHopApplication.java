@@ -1,6 +1,5 @@
 package com.example.demo;
 
-import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.PhotoService;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +25,18 @@ public class NixClothesShopNvHipHopApplication {
 
 	@Bean
 	public CommandLineRunner run(ApplicationContext ctx){
+
 		return (args -> {
 			/*service.createStudent("Mark", "mark@gmail.com");
-			service.createStudent("Max", "max@gmail.com");*/
-			service.findAll().forEach(System.out::println);
+            service.createStudent("Max", "max@gmail.com");*/
+//			service.findAll().forEach(System.out::println);
+			//service.deleteStudentEntityById(1L);
 
-			photoService.createPhotoEntity("llll", "first", 1L);
-			photoService.createPhotoEntity("llhyj", "second", 1L);
-			photoService.createPhotoEntity("erer", "third", 2L);
-
-			photoService.getPhotoByDescription("first").forEach(photo -> System.out.println(photo.getUrl()));
+//			photoService.createPhotoEntity("llll", "first", 1L);
+//			photoService.createPhotoEntity("llhyj", "second", 1L);
+//			photoService.createPhotoEntity("erer", "third", 2L);
+//
+//			photoService.getPhotoByDescription("first").forEach(photo -> System.out.println(photo.getUrl()));
 
 		});
 	}

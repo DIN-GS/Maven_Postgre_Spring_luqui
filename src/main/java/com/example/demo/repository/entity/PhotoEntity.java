@@ -1,12 +1,8 @@
 package com.example.demo.repository.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.Generated;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 
 @Entity
 @Setter

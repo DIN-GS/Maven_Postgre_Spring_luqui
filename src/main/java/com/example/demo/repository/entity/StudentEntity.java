@@ -2,26 +2,45 @@ package com.example.demo.repository.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.PropertySource;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
-@Getter
 @Setter
+@Getter
 @Table(name = "student", schema = "nix")
+
 public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    public int id;
+    public Long id;
 
     @Column
     public String name;
 
     @Column
     public String email;
+
+    /*public StudentEntity(){}
+
+    public StudentEntity(int id, String name, String email){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }*/
+
+    public void setPhoto(List<PhotoEntity> photo){
+        this.photo = new ArrayList<>();
+        Collections.copy(this.photo, photo);
+    }
 
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade =  CascadeType.REMOVE)
     private List<PhotoEntity> photo;
