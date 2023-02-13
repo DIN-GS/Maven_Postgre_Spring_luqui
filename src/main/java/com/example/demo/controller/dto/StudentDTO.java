@@ -13,12 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StudentDTO {
-    private int id;
+
+    private Long id;
     private String name;
     private String email;
-    private List<PhotoDTO> photoDTOList;
+    ///private List<PhotoDTO> photoDTOList;
 
-    @Override
+    /*@Override
     public String toString() {
         return "StudentDTO{" +
                 "id=" + id +
@@ -26,5 +27,5 @@ public class StudentDTO {
                 ", email='" + email + '\'' +
                 ", photoDTOList=" + photoDTOList +
                 '}';
-    }
+    }*/
 }

@@ -29,10 +29,10 @@ public class StudentEntity {
     @Column
     public String email;
 
-    /*public StudentEntity(){}
+    public StudentEntity(){}
 
-    public StudentEntity(int id, String name, String email){
-        this.id = id;
+    /*public StudentEntity(String name, String email){
+
         this.name = name;
         this.email = email;
     }*/

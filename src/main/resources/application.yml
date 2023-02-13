@@ -4,3 +4,6 @@ spring:
     username: postgres
     driver-class-name: org.postgresql.Driver
     password: Bana54321bana3024 #${PASSWORD}
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher

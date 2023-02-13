@@ -14,13 +14,13 @@ public interface StudentMapper {
 
     StudentMapper INSTANCE = Mappers.getMapper(StudentMapper.class);
 
-    @Mapping(source = "photo", target = "photoDTOList")
-    @Mapping(source = "id", target = "id", qualifiedByName = "longConverter")
+    //@Mapping(source = "photo", target = "photoDTOList")
+    //@Mapping(source = "id", target = "id", qualifiedByName = "longConverter")
     StudentDTO toDTO(StudentEntity studentEntity);
 
     StudentEntity toEntity(StudentDTO studentDTO);
 
-    @Mapping(source = "photo", target = "photoDTOList")
+    //@Mapping(source = "photo", target = "photoDTOList")
     List<StudentDTO> studentsToDTO(List<StudentEntity> studentEntities);
 
     @Named("longConverter")
