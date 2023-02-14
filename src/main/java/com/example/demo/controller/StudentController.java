@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import com.example.demo.controller.dto.StudentDTO;
+import com.example.demo.exception.InvalidArgumentsException;
+import com.example.demo.exception.StudentDoesNotExistException;
 import com.example.demo.exception.StudentNotFoundException;
 import com.example.demo.mappers.StudentMapper;
 import com.example.demo.repository.entity.StudentEntity;
@@ -67,8 +69,14 @@ public class StudentController {
     @PostMapping(value = "/students/add",consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE/*consumes = "application/json"*/)
     public  ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDTO){
         StudentEntity studentEntity =   StudentMapper.INSTANCE.toEntity(studentDTO);
-        StudentDTO response  = StudentMapper.INSTANCE.toDTO(studentService.createStudent(studentEntity));
-        return new ResponseEntity<>(response, HttpStatus.CREATED);
+        try{
+            StudentDTO response  = StudentMapper.INSTANCE.toDTO(studentService.createStudent(studentEntity));
+            return new ResponseEntity<>(response, HttpStatus.CREATED);
+        } catch (InvalidArgumentsException exception){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+
+
         /*studentService.addStudentEntity(studentEntity);
         return "Student " + studentEntity.getName() + " was updated";*/
     }
@@ -79,7 +87,7 @@ public class StudentController {
     public ResponseEntity<StudentDTO> updateStudent(@PathVariable Long id, @RequestBody StudentDTO  studentDTO) {
         StudentEntity studentEntity = new StudentEntity();
         try {
-            studentEntity = studentService.updateStudent(studentDTO, id);
+            studentEntity = studentService.updateStudentById(studentDTO, id);
             return  new ResponseEntity<>(StudentMapper.INSTANCE.toDTO(studentEntity) , HttpStatus.OK);
         } catch (StudentNotFoundException exception){
             System.out.println("Crashed");

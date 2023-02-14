@@ -40,6 +40,7 @@ public class NixClothesShopNvHipHopApplication {
 //
 //			photoService.getPhotoByDescription("first").forEach(photo -> System.out.println(photo.getUrl()));
 
+			System.out.println(service.findStudentEntityById(2L));
 		});
 	}
 
