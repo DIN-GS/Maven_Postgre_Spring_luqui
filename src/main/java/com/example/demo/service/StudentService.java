@@ -11,6 +11,8 @@ import jakarta.annotation.Nullable;
 import jakarta.transaction.Transactional;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,12 +26,15 @@ public class StudentService {
 
     private final StudentRepository studentRepository;
 
+    private  final BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public void createStudent(String name, String email){
 
+    public void createStudent(String name, String email, String  password){
+        String encodedPassword = bCryptPasswordEncoder.encode(password);
         StudentEntity studentEntity = new StudentEntity();
         studentEntity.setName(name);
         studentEntity.setEmail(email);
+        studentEntity.setPassword(encodedPassword);
         studentRepository.save(studentEntity);
     }
 
@@ -63,6 +68,12 @@ public class StudentService {
         else throw new StudentNotFoundException("Student wasn't found");
     }
 
+    public StudentEntity findStudentEntityByEmail(String email) throws StudentNotFoundException{
+        if (studentRepository.getStudentEntityByEmail(email) != null)
+            return studentRepository.getStudentEntityByEmail(email);
+        else throw new StudentNotFoundException("Student wasn't found");
+    }
+
     public List<StudentEntity> findAll(){
         return studentRepository.findAll();
     }
@@ -71,5 +82,16 @@ public class StudentService {
     public boolean deleteStudentEntityById(Long id){
          studentRepository.deleteStudentEntityById(id);
          return true;
+    }
+
+    String getStudentEntityPasswordByEmail(@Param("email") String email){
+        StudentEntity student = studentRepository.getStudentEntityByEmail(email);
+        return  student.getPassword();
+    }
+
+
+    public boolean validateCredentials(String email, String password){
+        String encodedPassword = this.getStudentEntityPasswordByEmail(email);
+        return bCryptPasswordEncoder.matches(password, encodedPassword);
     }
 }

@@ -29,6 +29,11 @@ public class StudentEntity {
     @Column
     public String email;
 
+    @Column
+    private String password;
+
+    private String hello;
+
     public StudentEntity(){}
 
     /*public StudentEntity(String name, String email){

@@ -8,6 +8,7 @@ import com.example.demo.repository.StudentRepository;
 import com.example.demo.repository.entity.StudentEntity;
 import com.example.demo.service.StudentService;
 import com.example.demo.service.interfaces.Service;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,7 +25,7 @@ public class FakeStudentService extends StudentService  {
     private StudentEntity studentEntity;
 
     public FakeStudentService(StudentRepository studentRepository){
-        super(studentRepository);
+        super(studentRepository, new BCryptPasswordEncoder());
         initialize();
     }
 

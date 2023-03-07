@@ -20,4 +20,8 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Long> {
     StudentEntity updateStudentEntityById(Long id,String name, String email);
 
     boolean deleteStudentEntityById(@Param("student_id") Long student_id);
+
+    StudentEntity getStudentEntityByEmail(@Param("email") String email);
+
+    String getStudentEntityPasswordByEmail(@Param("email") String email);
 }

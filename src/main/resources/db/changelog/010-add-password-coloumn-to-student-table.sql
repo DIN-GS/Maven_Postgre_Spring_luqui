@@ -1,0 +1,2 @@
+ALTER TABLE nix.student
+ADD COLUMN password VARCHAR NULL;
