@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: nikita
+      changes:
+        - createTable:
+            schemaName: nix
+            tableName: student
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: name
+                  type: text
+              - column:
+                  name: email
+                  type: text
